@@ -151,7 +151,7 @@ class MyMap extends Component {
       disableClusteringAtZoom: 12,
       iconCreateFunction: function(cluster) {
         // console.log(cluster.getAllChildMarkers());
-        let avg = clusterAverage(cluster.getAllChildMarkers())
+        let avg = clusterMajority(cluster.getAllChildMarkers())
         if (avg == 'above') {
           return L.divIcon({
             html: `<span>${cluster.getChildCount()}</span>`,
