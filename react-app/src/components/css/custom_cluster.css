@@ -1,0 +1,50 @@
+.marker-cluster-custom {
+  background: #9370db;
+  border: 3px solid #ededed;
+  border-radius: 50%;
+  color: #ededed;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
+.marker-cluster-custom-high {
+  background: #5cb85c;
+  border: 1px solid #ededed;
+  border-radius: 50%;
+  color: #ededed;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
+.marker-cluster-custom-low {
+  background: #F5A623;
+  border: 1px solid #ededed;
+  border-radius: 50%;
+  color: #ededed;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
+.marker-cluster-custom-zero {
+  background: #d9534f;
+  border: 1px solid #ededed;
+  border-radius: 50%;
+  color: #ededed;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
+.marker-cluster-custom-null {
+  background: #6A1E74;
+  border: 1px solid #ededed;
+  border-radius: 50%;
+  color: #ededed;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
