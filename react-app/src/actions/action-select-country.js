@@ -1,4 +1,5 @@
 import arrToGeo from '../helpers/helper-2d-geojson'
+import arrToCluster from '../helpers/helper-2d-cluster'
 import axios from 'axios';
 const config = require('../config.js')
 const mode = config.mode
@@ -27,8 +28,11 @@ export const selectCountry = (country, sliderVal) => {
       .then(response => {
         // console.log(response);
         const headersList = response.data.result[0];
+        // console.log(headersList);
         const jsonData = response.data.result.slice(1)
         const points = arrToGeo(headersList, jsonData)
+        const clusterPoints = arrToCluster(headersList, jsonData)
+        // console.log(clusterPoints);
         const countryname = iso3311a2.getCountry(country)
         const numSchools = response.data.result.length - 1;
         // console.log(response.data.result[0]);
@@ -66,6 +70,7 @@ export const selectCountry = (country, sliderVal) => {
           type: 'COUNTRY_SELECTED',
           payload: {
             points: points,
+            clusterPoints: clusterPoints,
             selectedCountry: country,
             selectedCountryName: countryname,
             selectedCountryNumSchools: numSchools,
