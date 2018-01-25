@@ -30,6 +30,7 @@ let geojson = {
 let initial_state = {
   polygons: geojson,
   points: geojson,
+  clusterPoints: [],
   selectedCountry: null,
   selectedCountryName: " . ",
   selectedCountryNumSchools: null,
