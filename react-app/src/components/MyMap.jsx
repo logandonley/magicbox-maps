@@ -46,7 +46,12 @@ import {
 import Docker from './Dock'
 import UnicefNav from './UnicefNav';
 import LoadingSpinner from './LoadingSpinner'
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+import clusterAverage from '../helpers/helper-cluster-average';
+import L from 'leaflet';
+import './css/custom_cluster.css'
 const _ = require('lodash');
+// require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
 
 /**
  * My map class
@@ -141,6 +146,41 @@ class MyMap extends Component {
    */
   render() {
     const position = [this.state.lat, this.state.lng]
+    const clusterOptions = {
+      maxClusterRadius: 40,
+      disableClusteringAtZoom: 12,
+      iconCreateFunction: function(cluster) {
+        // console.log(cluster.getAllChildMarkers());
+        let avg = clusterAverage(cluster.getAllChildMarkers())
+        if (avg == 'above') {
+          return L.divIcon({
+            html: `<span>${cluster.getChildCount()}</span>`,
+            className: 'marker-cluster-custom-high',
+            iconSize: L.point(40, 40, true),
+          });
+        } else if (avg == 'below') {
+          return L.divIcon({
+            html: `<span>${cluster.getChildCount()}</span>`,
+            className: 'marker-cluster-custom-low',
+            iconSize: L.point(40, 40, true),
+          });
+
+        } else if (avg == 'zero') {
+          return L.divIcon({
+            html: `<span>${cluster.getChildCount()}</span>`,
+            className: 'marker-cluster-custom-zero',
+            iconSize: L.point(40, 40, true),
+          });
+        } else if (avg == 'null') {
+          return L.divIcon({
+            html: `<span>${cluster.getChildCount()}</span>`,
+            className: 'marker-cluster-custom-null',
+            iconSize: L.point(40, 40, true),
+          });
+        }
+
+      },
+    }
 
     // console.log(this.props.activeCountry.geojson);
     return (
@@ -171,11 +211,13 @@ class MyMap extends Component {
             onEachFeature={onEachAdminFeature(this.props)}
             filter={this.geoFilter.bind(this)}
           ></GeoJSON>
-          <GeoJSON
+          <MarkerClusterGroup markers={this.props.activeCountry.clusterPoints} options={clusterOptions} />
+          {/* <GeoJSON
             key={_.uniqueId()}
             data={this.props.activeCountry.points}
             pointToLayer={pointToLayer(this.props.sliderValues.sliderVal)}
-          ></GeoJSON>
+          ></GeoJSON> */}
+
         </Map>
         <Docker didUpdate={this.state.didUpdate}></Docker>
         <LoadingSpinner display={this.state.loading}></LoadingSpinner>
