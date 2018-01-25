@@ -47,7 +47,7 @@ import Docker from './Dock'
 import UnicefNav from './UnicefNav';
 import LoadingSpinner from './LoadingSpinner'
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-import clusterAverage from '../helpers/helper-cluster-average';
+import clusterMajority from '../helpers/helper-cluster-majority';
 import L from 'leaflet';
 import './css/custom_cluster.css'
 const _ = require('lodash');
