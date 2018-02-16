@@ -30,3 +30,26 @@
   color: white;
   background-color: #3F3F3F;
 }
+
+.navl{
+  float: left !important;
+}
+
+.navr{
+  float: right !important;
+}
+.navbar .container {
+  margin: 3px 0px 0px 0px !important ;
+  width: 100% !important;
+}
+
+.navbar-brand{
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-size: contain;
+  height: 70px !important;
+}
+.nav{
+  content: none !importnat ;
+}
